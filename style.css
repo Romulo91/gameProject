@@ -5,3 +5,21 @@ html, body {
   canvas {
     display: block;
   }
+
+
+  div { 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+	  align-items: center;
+    background-image: url("/assets/Angry-Birds-header.jpg");
+    margin: 0;
+    padding: 0;
+    height: 300px;
+    width: 1435px;;
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover;
+    font-size: 1.8rem;
+   
+  }
