@@ -12,7 +12,7 @@ html, body {
     flex-direction: column;
     justify-content: flex-end;
 	  align-items: center;
-    background-image: url("/assets/Angry-Birds-header.jpg");
+    background-image: url("./assets/Angry-Birds-header.jpg");
     margin: 0;
     padding: 0;
     height: 300px;
@@ -32,7 +32,7 @@ html, body {
 
 
   #imgStarter{
-    background-image: url("assets/startAngryBird.png");
+    background-image: url("./assets/startAngryBird.png");
     width: 100vw;
     height: 100vh;
     display: flex;
