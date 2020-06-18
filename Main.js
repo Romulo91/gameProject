@@ -27,12 +27,12 @@ let slingshot;
 
 let score = document.querySelector("#counter");
 function preload(){
-  imgBackgroundg = loadImage("/assets/backgroundSky.jpeg");
-  imgLevel2 = loadImage("/assets/background2.jpg");
-  dotImg = loadImage("/assets/Angry_Bird.png");
-  boxingImg = loadImage("/assets/tnt.png");
+  imgBackgroundg = loadImage("./assets/backgroundSky.jpeg");
+  imgLevel2 = loadImage("./assets/background2.jpg");
+  dotImg = loadImage("./assets/Angry_Bird.png");
+  boxingImg = loadImage("./assets/tnt.png");
   // imgStart = loadImage("/assets/startAngryBird.png");
-  imgOver = loadImage("/assets/gameover.jpg");
+  imgOver = loadImage("./assets/gameover.jpg");
 }
 
 
