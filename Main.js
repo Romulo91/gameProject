@@ -31,7 +31,7 @@ function preload(){
   imgLevel2 = loadImage("./assets/background2.jpg");
   dotImg = loadImage("./assets/Angry_Bird.png");
   boxingImg = loadImage("./assets/tnt.png");
-  // imgStart = loadImage("/assets/startAngryBird.png");
+  //imgStart = loadImage("/assets/startAngryBird.png");
   imgOver = loadImage("./assets/gameover.jpg");
 }
 
@@ -115,13 +115,13 @@ function draw(){
   
   console.log("this is Level 0"); 
   document.getElementById("countScore").style.display="none";
-  //background(imgStart);
+  // background(imgStart);
   //  document.querySelector("#imgStarter").innerHTML = imgStart; 
-   textSize(20);
-   textAlign(CENTER);
-   fill(51);
-   textSize(32);
-   text('Press ENTER to Start', 970, 300);
+  //  textSize(20);
+  //  textAlign(CENTER);
+  //  fill(51);
+  //  textSize(32);
+  //  text('Press ENTER to Start', 970, 300);
    
    if(keyCode === 13){
      level = 1;
