@@ -1,6 +1,6 @@
 const { Engine, World, Bodies, Mouse, MouseConstraint, Constraint } = Matter;
 
-
+// test
 // images
 let imgBackground; 
 let dotImg; 
@@ -14,12 +14,9 @@ let birdCount = 0;
 // LEVEL
 let level = 0;
 
-
-
 // new Part.
 var particles = [];
 // !!!!!!!!!!
-
 
 let ground; 
 const boxes = []; 
@@ -31,8 +28,8 @@ let slingshot;
 let score = document.querySelector("#counter");
 function preload(){
   imgBackgroundg = loadImage("/assets/backgroundSky.jpeg");
-  imgLevel2 = loadImage("/assets/background2.jpg")
-  dotImg = loadImage("/assets/Angry_Bird.png")
+  imgLevel2 = loadImage("/assets/background2.jpg");
+  dotImg = loadImage("/assets/Angry_Bird.png");
   boxingImg = loadImage("/assets/tnt.png");
   // imgStart = loadImage("/assets/startAngryBird.png");
   imgOver = loadImage("/assets/gameover.jpg");
@@ -134,19 +131,15 @@ function draw(){
   }
 
 
-  if( birdCount >= 3 ) {
+  if(birdCount >= 3 ) {
     background(imgOver);
     console.log("Game Over"); 
-  
-
+    
     if(keyCode === 13){
-      level = 0;
+      birdCount = 0;
+      level = 1;
     }
-  }
-
-
-
-  if(level == 1) {
+  } else if(level == 1) {
     console.log("Level_1");
     document.getElementById("countScore").style.display="";
       document.getElementById("imgStarter").style.display="none";
