@@ -1,13 +1,25 @@
 const { Engine, World, Bodies, Mouse, MouseConstraint, Constraint } = Matter;
 
-// console.log("hello main.js");
+
+// images
 let imgBackground; 
 let dotImg; 
 let boxingImg;
+
+// count and level 
 let countScore = 0; 
 let birdCount = 0; 
-let level_1; 
-let level_2; 
+
+
+// LEVEL
+let level = 0;
+
+
+
+// new Part.
+var particles = [];
+// !!!!!!!!!!
+
 
 let ground; 
 const boxes = []; 
@@ -15,22 +27,55 @@ let bird;
 let world,engine; 
 let mContraint;
 let slingshot; 
+
 let score = document.querySelector("#counter");
 function preload(){
   imgBackgroundg = loadImage("/assets/backgroundSky.jpeg");
+  imgLevel2 = loadImage("/assets/background2.jpg")
   dotImg = loadImage("/assets/Angry_Bird.png")
   boxingImg = loadImage("/assets/tnt.png");
+  // imgStart = loadImage("/assets/startAngryBird.png");
+  imgOver = loadImage("/assets/gameover.jpg");
 }
 
-// level = 1;
-// birdcount = 0; 
-// if birdcount >= 3 && countScore < 3 = beginn new level 1 
 
 function setup(){
   const canvas = createCanvas(1435, 500);  // create the canvas in the main JS
   engine = Engine.create();
   engine = Matter.Engine.create();
   world = engine.world;
+// engine -> run 
+
+
+// new Particle! !!!!!!!
+var prev = null;
+for (var x = 200; x < 300; x += 20) {
+
+  var fixed = false;
+  if (!prev) {
+    fixed = true;
+  }
+  var p = new Particle( 900, 50, 18, fixed);
+  // var p2 = new Particle(200, 150, 10);
+  particles.push(p);
+
+  if (prev) {
+    var optionsLevel2 = {
+      bodyA: p.body,
+      bodyB: prev.body,
+      length: 40,
+      stiffness: 0.4
+    }
+    var constraint = Constraint.create(optionsLevel2);
+    World.add(world, constraint);
+  }
+
+  prev = p;
+}
+// !!!!!!!!!!!!!
+
+
+
   ground = new Ground(width/2, height - 5, width, 20);
   
   for (let i = 0; i < 3; i++) {
@@ -64,15 +109,59 @@ function mouseReleased() {
 }
 
 
+// Draw - Function 
 
 function draw(){
+ 
+  
+  if (level == 0){
+  
+  console.log("this is Level 0"); 
+  document.getElementById("countScore").style.display="none";
+  //background(imgStart);
+  //  document.querySelector("#imgStarter").innerHTML = imgStart; 
+   textSize(20);
+   textAlign(CENTER);
+   fill(51);
+   textSize(32);
+   text('Press ENTER to Start', 970, 300);
+   
+   if(keyCode === 13){
+     level = 1;
+    
+   }
+
+  }
+
+
+  if( birdCount >= 3 ) {
+    background(imgOver);
+    console.log("Game Over"); 
+  
+
+    if(keyCode === 13){
+      level = 0;
+    }
+  }
+
+
+
+  if(level == 1) {
+    console.log("Level_1");
+    document.getElementById("countScore").style.display="";
+      document.getElementById("imgStarter").style.display="none";
+    if(birdCount <=3 && countScore == 3) {
+      countScore = 0;
+      level= 2;
+      birdCount = 0;
+    }
   background(imgBackgroundg);
   Matter.Engine.update(engine);
   ground.show();
   for (let box of boxes){
-    box.show();
+  box.show();
   }
-  
+
   slingshot.show();
   bird.show();
 
@@ -82,17 +171,34 @@ function draw(){
         box.outOfCanvas=true;
 
         countScore += 1
-        console.log("here!!!!!!!!!!!!!", countScore, box);
       }
     }
   })
-   // go to next Level...
-   //  if (birdCount >= 3) return level_1 === true
-   //  return level_2
-   //  console.log(level_1)
 
   document.querySelector("#counter").innerHTML = countScore;
-  
+   
+  }
+
+  if(level == 2) {
+
+    // draw second level here
+   background(imgLevel2);
+   Matter.Engine.update(engine);
+   ground.show();
+   for (let box of boxes){
+   box.show();  
+   console.log("level 2")
+   slingshot.show();
+  bird.show();
+
+  }
+
+  document.querySelector("#counter").innerHTML = countScore;
+  for (var i = 0; i < particles.length; i++) {
+    particles[i].show();
+  }
+}
+
 }
 
 function keyPressed() {
@@ -101,8 +207,7 @@ function keyPressed() {
     bird = new Bird(150, 300, 25);
     slingshot.attach(bird.body);
     birdCount +=  1
-    console.log(birdCount);
+    console.log("pressing space");
   }
 
-
-}
+} 

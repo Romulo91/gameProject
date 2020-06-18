@@ -5,20 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Angry Bird</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.11.0/matter.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.14.2/matter.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.sound.min.js"></script>
 <script src="https://unpkg.com/matter-js@0.14.2/build/matter.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.14.2/matter.js" ></script>
+
+
     
 </head>
-<body>
+<body >
 
-    <div>
-        <h1 >You're score :</h1> 
+    
+<div id="imgStarter">
+    <img src="assets/startAngryBird.png"> 
+    
+</div>
+
+    <div id="countScore">
+        <h1  id="whatScore">You're score :</h1> 
         <h1 id="counter">0</h1> 
-     
+        </div>
+
+        <div  >
         </div>
 
     <script src="Main.js" ></script>
@@ -26,5 +37,7 @@
     <script src="Bird.js" ></script>
     <script src="ground.js" ></script>
     <script src="slingshot.js"></script>
+    <script src="particle.js"></script>
+
 </body>
 </html>
